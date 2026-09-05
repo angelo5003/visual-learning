@@ -37,6 +37,11 @@ overwrites the other's stack info. Copying the style into each project
 individually keeps every project's profile fully independent: switching
 between projects never mixes or loses anything.
 
+Turning the style *on* is a separate decision from installing it — see
+below. Installing it never changes anything about how a project behaves
+by itself; only explicitly running `/output-style` or opting into
+automatic mode does.
+
 ## One-time setup: create your personal template stash
 
 Paste into Claude Code once, on any machine:
@@ -62,40 +67,69 @@ or mix stack profiles.
 
 ## Per-project setup — repeat in each project (new or existing)
 
+**Default: manual.** This installs the style's files into the project
+but does **not** turn it on automatically — you choose when to use it,
+per session, with a command. Nothing about how the project runs changes
+unless you explicitly turn it on.
+
 ```
 Set up Visual Learning OS v5 for this project from my template stash
-at ~/.claude/templates/visual-learning-os-v5/:
+at ~/.claude/templates/visual-learning-os-v5/, for MANUAL use — do
+not make it the automatic default yet:
 
 1. Copy visual-learning-os-v5.md and reference/ from the stash into
    ./.claude/output-styles/ in this project.
-2. Create or merge ./.claude/settings.json in this project with
-   { "outputStyle": "Visual Learning OS v5" } — don't touch
-   ~/.claude/settings.json.
-3. Create ./.claude/output-styles/stack-profile.md for this project
+2. Create ./.claude/output-styles/stack-profile.md for this project
    by inspecting its package.json/requirements.txt/etc. and its own
    CLAUDE.md/AGENTS.md if either exists.
-4. Validate the JSON with jq, and show me the final settings.json
-   and the filled-in profile.
+3. Do NOT write outputStyle into ./.claude/settings.json.
+4. Show me the files you created.
 ```
+
+### Turning it on for a session (manual mode)
+
+Once installed, switch to it whenever you want with:
+
+```
+/output-style Visual Learning OS v5
+```
+
+That only affects your current session. Close Claude Code or start a
+new session and it's back to the default style — run the command again
+next time you want v5.
+
+### Making it automatic instead (optional, your call)
+
+If you'd rather have it on every session in a project without typing
+the command each time, say so explicitly:
+
+```
+Make Visual Learning OS v5 the automatic default for this project —
+set outputStyle in ./.claude/settings.json to "Visual Learning OS v5".
+```
+
+This is the only step that changes what happens without you asking
+each time, so it's opt-in on purpose, per project.
 
 ## Is this one-time, or do I run it every time?
 
-**One-time, at two levels — never something you repeat just to use the style.**
-
 - **Stash setup** → once per **laptop**. Do it again later only if you
   want to pull in an improved version of the style.
-- **Per-project setup** → once per **project**. After that, opening the
-  project tomorrow, next week, or next month just works automatically —
-  no prompt needed, nothing to re-run.
-
-You'd only touch a project's setup again to update it after improving
-the stash, or if its stack changed enough to need a new profile.
+- **Per-project file setup** (copying the files, creating the profile) →
+  once per **project**.
+- **Turning the style on**, after that one-time setup, depends on which
+  mode you chose:
+  - **Manual (default):** run `/output-style Visual Learning OS v5`
+    each session you want it active.
+  - **Automatic (opt-in):** nothing to run — it's on every session in
+    that project from then on.
 
 ## Sanity check
 
-Ask Claude Code: *"Show me the active output style for this project
-and confirm it's Visual Learning OS v5, and show the stack profile you
-filled in."*
+After manually switching with `/output-style`, ask: *"Confirm the
+active output style and show the stack profile you filled in."*
+(If you made it automatic, this also confirms it's on without you
+having run the command.)
 
 ## Keeping projects up to date
 
