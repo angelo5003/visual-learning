@@ -78,6 +78,19 @@ at ~/.claude/templates/visual-learning-os-v5/:
    and the filled-in profile.
 ```
 
+## Is this one-time, or do I run it every time?
+
+**One-time, at two levels — never something you repeat just to use the style.**
+
+- **Stash setup** → once per **laptop**. Do it again later only if you
+  want to pull in an improved version of the style.
+- **Per-project setup** → once per **project**. After that, opening the
+  project tomorrow, next week, or next month just works automatically —
+  no prompt needed, nothing to re-run.
+
+You'd only touch a project's setup again to update it after improving
+the stash, or if its stack changed enough to need a new profile.
+
 ## Sanity check
 
 Ask Claude Code: *"Show me the active output style for this project
