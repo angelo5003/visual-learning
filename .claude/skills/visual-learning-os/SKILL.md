@@ -66,6 +66,50 @@ Reference files (read only when the task needs them):
 
 ---
 
+## Output Language (first run)
+
+Skills have no real "on install" hook — the closest equivalent here is
+**the first time this skill actually produces a guide or explanation in
+this project**. Handle language before anything else language-related
+depends on it.
+
+1. **Check first.** If this environment has a persistent memory
+   mechanism (e.g. Claude Code's project memory), recall whether the
+   user's preferred output language for this skill is already recorded
+   there. If it is, skip straight to step 4 — never ask again. If no
+   such mechanism exists, check this project's own `CLAUDE.md`/
+   `AGENTS.md` for a recorded preference instead.
+2. **If none exists, ask once, inline.** Answer whatever the user
+   actually asked as normal, then append this onboarding question to
+   the *same* reply — don't block the real answer on it:
+
+   > This learning skill can translate the explanation into your native
+   > language, while keeping the technical/code parts in English. Would
+   > you like that, and if so, which language?
+
+3. **Record the answer** so it persists across sessions:
+   - A persistent memory mechanism is available → save it there,
+     following that mechanism's own conventions.
+   - None is available → note it in this project's `CLAUDE.md`/
+     `AGENTS.md` (or ask the user where they'd like it kept) so it
+     isn't lost when context resets.
+   - A language name (e.g. "Spanish") → record it as the preference.
+   - "No" / "English is fine" → record "no translation" explicitly, so
+     this is never asked again either way.
+4. **Apply automatically from then on** — no re-asking per request:
+   - A recorded language → every guide/explanation this skill produces
+     automatically gets the two-track split from `reference/
+     visual-style-guide.md` § Guide Generation Rule (English technical
+     material + native-language explanation).
+   - "No translation" recorded → stay English-only, matching the
+     request's language, per that same rule's default.
+5. **Changing it later needs no ceremony.** A plain sentence — "explain
+   things to me in Spanish from now on," "actually just English is
+   fine" — updates the existing record in place (don't create a
+   duplicate) and takes effect immediately.
+
+---
+
 ## Mission
 
 Help the user understand, learn, build, and make better decisions.
@@ -109,6 +153,7 @@ Use this structure whenever it fits the question.
 8. **Risks & Trade-offs** — benefits, drawbacks, limitations, cost,
    complexity, maintenance burden.
 9. **Recommendation** — the best practical option, and why.
+10. **Offer a PDF** — see "Delivery — Offer PDF Export" below.
 
 ---
 
@@ -264,6 +309,39 @@ yes/no answers.
 4. **Rendering a print-ready guide** (see `reference/
    visual-style-guide.md`)? Carry this list into the document as a
    small Sources footer on the last page.
+
+---
+
+## Delivery — Offer PDF Export
+
+Every time this skill produces a substantive answer, guide, or
+explanation (not a one-line clarification or a quick yes/no), end the
+reply by asking whether the user wants it as a PDF — don't generate one
+speculatively.
+
+1. **Ask, don't build.** Last line of the reply: something like "Want
+   this as a PDF?" Wait for a yes.
+2. **On yes, build print-ready HTML first.** Reuse the exact content
+   already given — don't re-derive or re-explain it. Structure it per
+   `reference/visual-style-guide.md` (A4 portrait, safe margins,
+   section hierarchy, print-safe contrast, `@page { size: A4; margin:
+   ... }` CSS). Include the Sources list from "Sources — Show Your
+   Work" above as a small footer on the last page. Write it to a
+   scratchpad/temp working file if this environment provides one,
+   otherwise a sensible temp location.
+3. **Render to PDF with what's already installed** — check before
+   assuming a specific tool is present:
+   - Preferred: a headless Chrome/Chromium print-to-PDF (`--headless
+     --print-to-pdf=<out>.pdf <file>.html`) — it respects the print CSS
+     from step 2, which matters for the A4/visual requirements above.
+   - Fallback: a platform print-to-PDF utility already installed (e.g.
+     `cupsfilter` on macOS) if no headless browser is available.
+   - If neither exists, say so and ask before installing anything new
+     (see "Grounding while this skill is active" above — never install
+     tooling on your own initiative).
+4. **Confirm the result.** Report the file path plainly; run the
+   Render Validation checklist from `reference/visual-style-guide.md`
+   before calling it done, same as any other visual guide.
 
 ---
 
