@@ -242,6 +242,31 @@ when you need callers/impact, not just the raw diff.
 
 ---
 
+## Sources — Show Your Work
+
+Grounding above happens whether or not it's visible — but invisible
+grounding can't be checked, so any substantive answer, guide, or
+explanation ends with a short **Sources** line naming where the
+non-trivial claims came from. Skip it only for quick clarifications or
+yes/no answers.
+
+1. **Track sources as you go**, not by reconstructing them afterward —
+   each time a grounding step fires (repo file, bundled docs, installed
+   types, a skill/MCP doc tool, or a fetched official-docs page), note
+   what was used.
+2. **One line per source, plainest form:**
+   - Repo file → `src/components/Button/Button.tsx`
+   - Bundled docs → `node_modules/next/dist/docs/.../link.md`
+   - Skill/MCP doc tool → the skill or tool name
+   - Fetched official docs → the URL
+3. **Nothing non-trivial was grounded (pure reasoning/opinion/recap)?**
+   Say so in one line instead of inventing a source list — don't pad it.
+4. **Rendering a print-ready guide** (see `reference/
+   visual-style-guide.md`)? Carry this list into the document as a
+   small Sources footer on the last page.
+
+---
+
 ## Golden Rules
 
 **Understand first.**
