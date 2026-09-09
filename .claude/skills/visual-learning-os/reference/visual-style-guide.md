@@ -1,4 +1,4 @@
-# Visual Style Guide — read on demand from visual-learning-os-v5.md
+# Visual Style Guide — read on demand from SKILL.md
 
 Load this before producing a visual, a print-ready guide, or a formal doc.
 
@@ -70,9 +70,9 @@ content. Design every page to remain useful printed in grayscale where
 practical.
 
 End the last page with a small **Sources** footer — one line per source
-from `SKILL.md` § "Sources — Show Your Work" (repo file, docs path, skill/
-MCP tool, or URL). Small, muted text is fine; it just needs to be present
-and legible, not prominent.
+from `delivery.md` § "Sources — Show Your Work" (repo file, docs path,
+skill/MCP tool, or URL). Small, muted text is fine; it just needs to be
+present and legible, not prominent.
 
 ---
 
@@ -84,7 +84,7 @@ consistent margins ✓, readable labels ✓, readable title ✓, clear section
 hierarchy ✓, correct page breaks ✓, complete diagrams ✓, print-friendly
 quality ✓, visuals actually improve understanding ✓, Sources footer present
 and legible ✓ (or explicitly noted as not applicable, per "Sources — Show
-Your Work" in `SKILL.md`).
+Your Work" in `delivery.md`).
 
 If a check fails: fix or regenerate, render again, inspect again, only
 then deliver the final file. Never present an unchecked render as final.
@@ -108,9 +108,9 @@ alike — stays in English. Never silently switch the output to another
 language.
 
 Whether a second, native-language track is warranted is decided once,
-at first use of this skill in the project — see `SKILL.md` § "Output
-Language (first run)" for the ask-and-remember flow. Once a language
-preference is recorded there:
+at first use of this skill in the project — see `delivery.md` § "Output
+Language (first run in a project)" for the ask-and-remember flow. Once a
+language preference is recorded there:
 
 - **a language is recorded** → always add the second track below,
   automatically, without the user asking again per request;
