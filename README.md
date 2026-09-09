@@ -1,4 +1,4 @@
-# Visual Learning OS
+# Visual Learning
 
 A teaching-first Claude Code **skill**: plain language before jargon,
 auto-generated visuals, explicit trade-offs, and a **Work Recap & Feedback
@@ -14,7 +14,7 @@ One thing the rebuild does **not** claim: it does not auto-detect when your
 topic has ended and silently switch itself off. There's no reliable signal
 for that. Instead:
 
-- It applies only when you run `/visual-learning-os` (or ask for it by name).
+- It applies only when you run `/visual-learning` (or ask for it by name).
 - Once invoked, it stays active for that task or topic — including follow-ups.
 - It ends when you say to stop, you clearly change topic, or Claude judges the
   topic finished — and when Claude does that, the reply's first line is
@@ -22,7 +22,7 @@ for that. Instead:
 
 ## Files
 
-All under `.claude/skills/visual-learning-os/`:
+All under `.claude/skills/visual-learning/`:
 
 - `SKILL.md` — the skill: when it applies, scope/exit rules, core principle,
   response structure, teaching mode, Work Recap & Feedback Mode, Existing
@@ -52,13 +52,13 @@ mixes them up.
 Paste into Claude Code once, on any machine:
 
 ```
-Set up the "visual-learning-os" skill as a project-scoped skill —
+Set up the "visual-learning" skill as a project-scoped skill —
 never at the user/global level, so different projects never share
 or mix stack profiles.
 
-1. Fetch these files from angelo5003/visual-learning-os, branch main,
-   path .claude/skills/visual-learning-os/, into a personal template
-   stash at ~/.claude/templates/visual-learning-os/:
+1. Fetch these files from angelo5003/visual-learning, branch main,
+   path .claude/skills/visual-learning/, into a personal template
+   stash at ~/.claude/templates/visual-learning/:
    - SKILL.md
    - reference/domain-modes.md
    - reference/visual-style-guide.md
@@ -72,13 +72,13 @@ or mix stack profiles.
 ## Per-project setup — repeat in each project
 
 ```
-Install the visual-learning-os skill for this project from my template
-stash at ~/.claude/templates/visual-learning-os/:
+Install the visual-learning skill for this project from my template
+stash at ~/.claude/templates/visual-learning/:
 
 1. Copy SKILL.md and reference/ from the stash into
-   ./.claude/skills/visual-learning-os/ in this project, unchanged.
+   ./.claude/skills/visual-learning/ in this project, unchanged.
 2. Copy stack-profile.template.md from the stash to
-   ./.claude/skills/visual-learning-os/stack-profile.md in this project,
+   ./.claude/skills/visual-learning/stack-profile.md in this project,
    then fill it in by inspecting this project's package.json /
    requirements.txt / etc. and its own CLAUDE.md / AGENTS.md if either
    exists.
@@ -86,24 +86,24 @@ stash at ~/.claude/templates/visual-learning-os/:
 ```
 
 No `settings.json` edit, no activation step. Installing the files never
-changes how the project behaves — only invoking `/visual-learning-os` does,
+changes how the project behaves — only invoking `/visual-learning` does,
 and only for that task.
 
 ## Using it
 
 ```
-/visual-learning-os
+/visual-learning
 ```
 
 Type that whenever you want it for the task at hand. It confirms it's active
-(`Using Visual Learning OS for this.`), helps with that task, and marks the
+(`Using Visual Learning mode for this.`), helps with that task, and marks the
 switch back with `(back to default responses)` when the topic is done.
 
 ## How often do I run this?
 
 - **Stash setup** → once per laptop (again only to pull an improved version).
 - **Per-project file setup** → once per project.
-- **Invoking `/visual-learning-os`** → every time you want it for a task.
+- **Invoking `/visual-learning`** → every time you want it for a task.
   That's the point — it's a deliberate per-task choice, not a mode that
   stays on.
 
@@ -111,7 +111,7 @@ switch back with `(back to default responses)` when the topic is done.
 
 When you improve `SKILL.md` or a reference file, re-pull into your template
 stash, then re-copy `SKILL.md` and `reference/` into each project's
-`.claude/skills/visual-learning-os/`. **Never** copy `stack-profile.md` (the
+`.claude/skills/visual-learning/`. **Never** copy `stack-profile.md` (the
 filled-in one) in either direction — only the blank
 `stack-profile.template.md` travels between projects.
 
