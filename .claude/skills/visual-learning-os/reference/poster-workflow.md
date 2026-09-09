@@ -25,18 +25,34 @@ image, say so and offer the native path.
    line. Note the source for each figure as you write it. This table is the
    educational payload and what the user keeps to rebuild or translate later.
 
+   **Language.** The poster's text *is* the learning material, so it follows
+   the recorded output language (`delivery.md` § Output Language). If a
+   language is recorded (e.g. Dutch), write every text block in it, with
+   terms handled per `visual-style-guide.md` § Guide Generation Rule — the
+   recorded-language term first, the standard English term in parentheses
+   where it aids recognition ("Verdamping (evaporation)"). Numbers, symbols
+   and the source line stay as they are. If no preference is recorded yet,
+   ask once here before generating — don't let a poster silently come out in
+   the request's language when the user studies in another. "Sometimes
+   English is easier for this one" overrides per-poster with no ceremony.
+
 2. **Image-generation prompt** for an external tool (ChatGPT image mode is the
    current best fit; the prompt ports). Build it from `visual-style-guide.md`:
    format, the named style, palette as hex, typography roles, the Step 1 text
    with "reproduce verbatim, check every word's spelling," and an explicit
    exclusion of **added slogans, captions, or filler text in the margins** —
-   image tools pad empty space with invented copy.
+   image tools pad empty space with invented copy. If the text isn't English,
+   name the language and add "render this text exactly, do not translate it" —
+   image tools otherwise flip it back to English.
 
 3. **Fact-check, in this order.** First re-verify your own Step 1 figures
    *against sources* — not from memory; a wrong number there survives both
    steps unchallenged. Then check the returned image: text rendered exactly
-   (no garbled or dropped letters, numbers intact), no invented text, labels
-   placed right, facts matching the corrected dataset. Write corrections
+   (no garbled or dropped letters, numbers intact — pay extra attention to
+   accented characters and long compound words in non-English text, where
+   image tools garble most), nothing translated back to English, no invented
+   text, labels placed right, facts matching the corrected dataset. Write
+   corrections
    grouped **must-fix (factual) / should-fix (unsanctioned content) /
    optional**, titled in the recorded output language (`delivery.md`).
 
